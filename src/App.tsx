@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import CSVReader from "./components/csv/reader";
 
 const App: React.FC = () => {
   return (
@@ -19,8 +20,11 @@ const App: React.FC = () => {
           Learn React
         </a>
       </header>
+      <div>
+        <CSVReader />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
