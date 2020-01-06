@@ -31,7 +31,6 @@ const Reader = () => {
         onFileLoaded={onCSVData}
         parserOptions={PARSER_OPTIONS}
       />
-      <p>and then open the console</p>
     </div>
   );
 };
