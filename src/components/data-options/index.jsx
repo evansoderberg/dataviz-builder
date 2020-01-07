@@ -9,12 +9,8 @@ const Options = () => {
 
   const data = useSelector(state => state.cleanedData);
 
-  console.log("xAxis", xAxis);
-  console.log("yAxis", yAxis);
-
   if (!data || !data.length) return null;
   const dataKeys = Object.keys(data[0]);
-  console.log("dataKeys", dataKeys);
 
   const handleXChange = event => {
     dispatch({ type: "SET_X_AXIS", value: event.target.value });

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import CSVReader from "./components/csv/reader";
 import DataOptions from "./components/data-options";
-import { LineChart, ScatterPlot } from "./components/visualizations";
+import { ScatterPlot } from "./components/visualizations";
 
-import { Provider, useSelector, useDispatch } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 
 import { createStore } from "redux";
 
@@ -31,7 +31,6 @@ const AppInner = () => {
     <div className="App">
       <CSVReader />
       <DataOptions />
-      {/* <LineChart data={data} xAxis={xAxis} yAxis={yAxis} /> */}
       <ScatterPlot data={data} xAxis={xAxis} yAxis={yAxis} />
     </div>
   );
