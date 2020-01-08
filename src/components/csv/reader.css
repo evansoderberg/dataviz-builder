@@ -4,10 +4,13 @@
   justify-content: center;
   flex-direction: column;
   padding-top: 25px;
-  padding-bottom: 50px;
 }
 
 .csv-input {
   width: 150px;
   margin-top: 10px;
+}
+
+.sample-data {
+  font-size: small;
 }
