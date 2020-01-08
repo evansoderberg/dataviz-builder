@@ -12,7 +12,8 @@ import {
 } from "./constants";
 
 const ScatterPlot = props => {
-  const { data, xAxis, yAxis, lineChart } = props;
+  const { data, options } = props;
+  const { xAxis, yAxis, lineChart } = options;
   const xAxisRef = useRef();
   const yAxisRef = useRef();
 
@@ -33,7 +34,7 @@ const ScatterPlot = props => {
     });
   }
 
-  const lineChartComponent = () => {
+  const renderLineChart = () => {
     if (!lineChart) return null;
     const sortedData = data
       ? data.sort((a, b) => d3.ascending(a[xAxis], b[xAxis]))
@@ -60,7 +61,7 @@ const ScatterPlot = props => {
           );
         })}
       </g>
-      {lineChartComponent()}
+      {renderLineChart()}
       <AxisLabels xAxis={xAxis} yAxis={yAxis} />
     </FixedDimensionSvg>
   );

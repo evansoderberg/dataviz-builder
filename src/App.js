@@ -1,62 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import CSVReader from "./components/csv/reader";
 import DataOptions from "./components/data-options";
 import ScatterPlot from "./components/visualizations/ScatterPlot";
-// import { ScatterPlot } from "./components/visualizations/d3-render";
 
-import { Provider, useSelector } from "react-redux";
+const App = () => {
+  const [visualizationOptions, setOptions] = useState(null);
+  const [data, setData] = useState(null);
 
-import { createStore } from "redux";
+  const mergeOptions = options => {
+    const newOptions = {
+      ...visualizationOptions,
+      ...options
+    };
+    setOptions(newOptions);
+  };
 
-const rootReducer = (
-  state = { xAxis: null, yAxis: null, lineChart: false, cleanedData: null },
-  action
-) => {
-  switch (action.type) {
-    case "SET_X_AXIS":
-      return { ...state, xAxis: action.value };
-    case "SET_Y_AXIS":
-      return { ...state, yAxis: action.value };
-    case "SET_CLEANED_DATA":
-      return { ...state, cleanedData: action.value };
-    case "TOGGLE_LINE_CHART":
-      return { ...state, lineChart: !state.lineChart };
-    default:
-      return state;
-  }
-};
-
-const store = createStore(rootReducer);
-
-const AppInner = () => {
-  const data = useSelector(state => state.cleanedData);
-  const xAxis = useSelector(state => state.xAxis);
-  const yAxis = useSelector(state => state.yAxis);
-  const lineChart = useSelector(state => state.lineChart);
   return (
     <div className="App">
-      <CSVReader />
+      <CSVReader setData={setData} mergeOptions={mergeOptions} />
       {data ? (
         <div className="Viz-and-opts">
-          <DataOptions />
-          <ScatterPlot
+          <DataOptions
             data={data}
-            xAxis={xAxis}
-            yAxis={yAxis}
-            lineChart={lineChart}
+            onChange={mergeOptions}
+            options={visualizationOptions}
           />
+          <ScatterPlot data={data} options={visualizationOptions} />
         </div>
       ) : null}
     </div>
-  );
-};
-
-const App = () => {
-  return (
-    <Provider store={store}>
-      <AppInner />
-    </Provider>
   );
 };
 

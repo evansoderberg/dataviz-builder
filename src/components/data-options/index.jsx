@@ -1,64 +1,60 @@
 import React from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+const AxisSelection = ({ label, value, options, onChange }) => {
+  return (
+    <label>
+      {label}
+      <select value={value} onChange={onChange}>
+        {options.map(val => {
+          return (
+            <option key={`label-${val}`} value={val}>
+              {val}
+            </option>
+          );
+        })}
+      </select>
+    </label>
+  );
+};
 
-const Options = () => {
-  const xAxis = useSelector(state => state.xAxis);
-  const yAxis = useSelector(state => state.yAxis);
-  const lineChart = useSelector(state => state.lineChart);
-  const dispatch = useDispatch();
+const Options = ({ data, options, onChange }) => {
+  const { xAxis, yAxis, lineChart } = options;
 
-  const data = useSelector(state => state.cleanedData);
-
-  if (!data || !data.length) return null;
   const dataKeys = Object.keys(data[0]);
 
   const handleXChange = event => {
-    dispatch({ type: "SET_X_AXIS", value: event.target.value });
+    onChange({ xAxis: event.target.value });
   };
 
   const handleYChange = event => {
-    dispatch({ type: "SET_Y_AXIS", value: event.target.value });
+    onChange({ yAxis: event.target.value });
   };
 
   const handleLineChartToggle = event => {
-    dispatch({ type: "TOGGLE_LINE_CHART" });
+    onChange({ lineChart: !lineChart });
   };
 
   return (
     <div>
-      <label>
-        X Axis:
-        <select value={xAxis} onChange={handleXChange}>
-          {dataKeys.map(val => {
-            return (
-              <option key={`x-${val}`} value={val}>
-                {val}
-              </option>
-            );
-          })}
-        </select>
-      </label>
+      <AxisSelection
+        label="X Axis"
+        value={xAxis}
+        options={dataKeys}
+        onChange={handleXChange}
+      />
       <br />
-      <label>
-        Y Axis:
-        <select value={yAxis} onChange={handleYChange}>
-          {dataKeys.map(val => {
-            return (
-              <option key={`y-${val}`} value={val}>
-                {val}
-              </option>
-            );
-          })}
-        </select>
-      </label>
+      <AxisSelection
+        label="Y Axis"
+        value={yAxis}
+        options={dataKeys}
+        onChange={handleYChange}
+      />
       <br />
       <label>
         Line Chart
         <input
           name="lineChart"
           type="checkbox"
-          checked={lineChart}
           onChange={handleLineChartToggle}
         />
       </label>

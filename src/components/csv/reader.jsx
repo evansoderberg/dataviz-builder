@@ -1,6 +1,5 @@
 import React from "react";
 import CSVReader from "react-csv-reader";
-import { useSelector, useDispatch } from "react-redux";
 import "./reader.css";
 
 const PARSER_OPTIONS = {
@@ -13,15 +12,19 @@ const cleanData = ({ data, errors, meta }) => {
   return data;
 };
 
-const Reader = () => {
-  const dispatch = useDispatch();
+const Reader = props => {
+  const { mergeOptions, setData } = props;
 
   const onCSVData = data => {
-    const cleanedData = cleanData(data);
-    const dataKeys = Object.keys(cleanedData[0]);
-    dispatch({ type: "SET_X_AXIS", value: dataKeys[0] });
-    dispatch({ type: "SET_Y_AXIS", value: dataKeys[1] });
-    dispatch({ type: "SET_CLEANED_DATA", value: cleanedData });
+    // For the time being, we're assuming there are at least
+    // two keys per line in the csv.
+    const cleaned = cleanData(data);
+    const dataKeys = Object.keys(cleaned[0]);
+    mergeOptions({
+      xAxis: dataKeys[0],
+      yAxis: dataKeys[1]
+    });
+    setData(cleaned);
   };
 
   return (
