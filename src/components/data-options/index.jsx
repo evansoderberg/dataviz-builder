@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 
 const AxisSelection = ({ label, value, options, onChange }) => {
   return (
@@ -35,7 +36,7 @@ const Options = ({ data, options, onChange }) => {
   };
 
   return (
-    <div>
+    <div className="Options-container">
       <AxisSelection
         label="X Axis"
         value={xAxis}

@@ -1,0 +1,11 @@
+.Options-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+select {
+  margin-left: 7px;
+}
