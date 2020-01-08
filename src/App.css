@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.Viz-and-opts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

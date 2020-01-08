@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
 const Options = () => {
   const xAxis = useSelector(state => state.xAxis);
   const yAxis = useSelector(state => state.yAxis);
+  const lineChart = useSelector(state => state.lineChart);
   const dispatch = useDispatch();
 
   const data = useSelector(state => state.cleanedData);
@@ -18,6 +19,10 @@ const Options = () => {
 
   const handleYChange = event => {
     dispatch({ type: "SET_Y_AXIS", value: event.target.value });
+  };
+
+  const handleLineChartToggle = event => {
+    dispatch({ type: "TOGGLE_LINE_CHART" });
   };
 
   return (
@@ -46,6 +51,16 @@ const Options = () => {
             );
           })}
         </select>
+      </label>
+      <br />
+      <label>
+        Line Chart
+        <input
+          name="lineChart"
+          type="checkbox"
+          checked={lineChart}
+          onChange={handleLineChartToggle}
+        />
       </label>
     </div>
   );

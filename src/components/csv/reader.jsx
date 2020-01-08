@@ -1,6 +1,7 @@
 import React from "react";
 import CSVReader from "react-csv-reader";
 import { useSelector, useDispatch } from "react-redux";
+import "./reader.css";
 
 const PARSER_OPTIONS = {
   header: true,
@@ -24,14 +25,12 @@ const Reader = () => {
   };
 
   return (
-    <div className="container">
-      <CSVReader
-        cssClass="react-csv-input"
-        label="Select CSV with header"
-        onFileLoaded={onCSVData}
-        parserOptions={PARSER_OPTIONS}
-      />
-    </div>
+    <CSVReader
+      cssClass="react-csv-input"
+      label="Select a CSV File"
+      onFileLoaded={onCSVData}
+      parserOptions={PARSER_OPTIONS}
+    />
   );
 };
 
