@@ -8,8 +8,13 @@ import {
   TRANSFORM_X_AXIS,
   TRANSFORM_Y_AXIS,
   RED,
-  DIMENSIONS
+  DIMENSIONS,
+  X_AXIS,
+  Y_AXIS,
+  LINE_CHART
 } from "./constants";
+
+export const SCATTER_PLOT_OPTIONS = [X_AXIS, Y_AXIS, LINE_CHART];
 
 const ScatterPlot = props => {
   const { data, options } = props;
@@ -35,6 +40,9 @@ const ScatterPlot = props => {
   }
 
   const renderLineChart = () => {
+    // Optionally render a path connecting all points
+    // in the scatter plot. First we'll have to sort the
+    // data against the x axis values to make a continuous path.
     if (!lineChart) return null;
     const sortedData = data
       ? data.sort((a, b) => d3.ascending(a[xAxis], b[xAxis]))

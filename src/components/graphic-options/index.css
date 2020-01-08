@@ -1,0 +1,25 @@
+.Graphic-choices {
+  display: flex;
+  justify-content: center;
+}
+
+.Graphic-choice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.Graphic-choice-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.Graphic-icon-img {
+  margin: 20px;
+}
