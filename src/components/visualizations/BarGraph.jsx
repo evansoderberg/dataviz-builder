@@ -9,14 +9,15 @@ import {
   DIMENSIONS,
   X_AXIS,
   Y_AXIS,
+  BAR_COLOR,
   BLUE
 } from "../../constants";
 
-export const BAR_GRAPH_OPTIONS = [X_AXIS, Y_AXIS];
+export const BAR_GRAPH_OPTIONS = [X_AXIS, Y_AXIS, BAR_COLOR];
 
 const BarChart = props => {
   const { data, options } = props;
-  const { xAxis, yAxis } = options;
+  const { xAxis, yAxis, barColor } = options;
   const xAxisRef = useRef();
   const yAxisRef = useRef();
 
@@ -62,7 +63,7 @@ const BarChart = props => {
             y={d.y}
             width={xScale.bandwidth()}
             height={d.height}
-            fill={BLUE}
+            fill={barColor || BLUE}
           />
         ))}
       </g>

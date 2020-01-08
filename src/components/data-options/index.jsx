@@ -5,7 +5,8 @@ import {
   BAR_GRAPH,
   X_AXIS,
   Y_AXIS,
-  LINE_CHART
+  LINE_CHART,
+  BAR_COLOR
 } from "../../constants";
 import { SCATTER_PLOT_OPTIONS } from "../visualizations/ScatterPlot";
 import { BAR_GRAPH_OPTIONS } from "../visualizations/BarGraph";
@@ -26,11 +27,12 @@ const Options = ({ visualizationChoice, data, options, onChange }) => {
   const dataKeys = Object.keys(data[0]);
   const visualizationOptions = OPTIONS_COMPONENTS[visualizationChoice];
 
-  const handleAxisChange = (axis, event) => {
+  const onOptionChange = (option, event) => {
     const changeArg = {};
-    changeArg[axis] = event.target.value;
+    changeArg[option] = event.target.value;
     onChange(changeArg);
   };
+
   const handleLineChartToggle = () => {
     onChange({ lineChart: !lineChart });
   };
@@ -40,17 +42,21 @@ const Options = ({ visualizationChoice, data, options, onChange }) => {
     label: "X Axis",
     value: xAxis,
     options: dataKeys,
-    onChange: event => handleAxisChange("xAxis", event)
+    onChange: event => onOptionChange("xAxis", event)
   };
   optionPropsMapping[Y_AXIS] = {
     label: "Y Axis",
     value: yAxis,
     options: dataKeys,
-    onChange: event => handleAxisChange("yAxis", event)
+    onChange: event => onOptionChange("yAxis", event)
   };
   optionPropsMapping[LINE_CHART] = {
     label: "Line Chart",
     onChange: handleLineChartToggle
+  };
+  optionPropsMapping[BAR_COLOR] = {
+    label: "Bar Color",
+    onChange: event => onOptionChange("barColor", event)
   };
 
   return (

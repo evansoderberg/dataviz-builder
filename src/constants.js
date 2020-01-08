@@ -10,6 +10,8 @@ export const TRANSFORM_X_AXIS_LABEL = `translate(${WIDTH / 2}, ${HEIGHT - 10})`;
 export const X_AXIS = "xAxis";
 export const Y_AXIS = "yAxis";
 export const LINE_CHART = "lineChart";
+export const BAR_COLOR = "barColor";
+
 export const SCATTER_PLOT = "scatterPlot";
 export const BAR_GRAPH = "barGraph";
 

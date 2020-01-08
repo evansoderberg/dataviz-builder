@@ -1,5 +1,5 @@
 import React from "react";
-import { X_AXIS, Y_AXIS, LINE_CHART } from "../../constants";
+import { X_AXIS, Y_AXIS, LINE_CHART, BAR_COLOR, BLUE } from "../../constants";
 import AxisSelection from "./AxisSelection";
 
 const OptionFactory = props => {
@@ -19,6 +19,19 @@ const OptionFactory = props => {
         <label>
           {props.label}
           <input name={props.type} type="checkbox" onChange={props.onChange} />
+        </label>
+      );
+    case BAR_COLOR:
+      return (
+        <label>
+          {props.label}
+          <input
+            type="color"
+            id={props.type}
+            name={props.type}
+            defaultValue={BLUE}
+            onChange={props.onChange}
+          />
         </label>
       );
     default:
