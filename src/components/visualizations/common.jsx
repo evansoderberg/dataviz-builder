@@ -1,5 +1,5 @@
 import React from "react";
-import { DIMENSIONS, TRANSFORM_X_AXIS_LABLE } from "../../constants";
+import { DIMENSIONS, TRANSFORM_X_AXIS_LABEL } from "../../constants";
 
 const Y_AXIS_X_COORD = 0 - DIMENSIONS.height / 2;
 const Y_AXIS_Y_COOD = 30;
@@ -16,11 +16,11 @@ export const AxisLabels = props => {
   const { xAxis, yAxis } = props;
   return (
     <>
-      <text className="axisLable" transform={TRANSFORM_X_AXIS_LABLE}>
+      <text className="axisLabel" transform={TRANSFORM_X_AXIS_LABEL}>
         {xAxis}
       </text>
       <text
-        className="axisLable"
+        className="axisLabel"
         transform="rotate(-90)"
         x={Y_AXIS_X_COORD}
         y={Y_AXIS_Y_COOD}

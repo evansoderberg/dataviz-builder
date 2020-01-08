@@ -8,7 +8,8 @@ import {
   TRANSFORM_Y_AXIS,
   DIMENSIONS,
   X_AXIS,
-  Y_AXIS
+  Y_AXIS,
+  BLUE
 } from "../../constants";
 
 export const BAR_GRAPH_OPTIONS = [X_AXIS, Y_AXIS];
@@ -61,7 +62,7 @@ const BarChart = props => {
             y={d.y}
             width={xScale.bandwidth()}
             height={d.height}
-            fill="blue"
+            fill={BLUE}
           />
         ))}
       </g>

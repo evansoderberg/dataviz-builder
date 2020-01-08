@@ -5,7 +5,7 @@ export const RED = "#ff0000";
 export const BLUE = "#3366ff";
 export const TRANSFORM_X_AXIS = `translate(0, ${HEIGHT - MARGIN.bottom})`;
 export const TRANSFORM_Y_AXIS = `translate(${MARGIN.left}, 0)`;
-export const TRANSFORM_X_AXIS_LABLE = `translate(${WIDTH / 2}, ${HEIGHT - 10})`;
+export const TRANSFORM_X_AXIS_LABEL = `translate(${WIDTH / 2}, ${HEIGHT - 10})`;
 
 export const X_AXIS = "xAxis";
 export const Y_AXIS = "yAxis";
