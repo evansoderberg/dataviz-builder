@@ -1,9 +1,9 @@
-.Graphic-choices {
+.Visualization-choices {
   display: flex;
   justify-content: center;
 }
 
-.Graphic-choice {
+.Visualization-choice {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.Graphic-choice-selected {
+.Visualization-choice-selected {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,6 @@
   font-weight: bold;
 }
 
-.Graphic-icon-img {
+.Visualization-icon-img {
   margin: 20px;
 }

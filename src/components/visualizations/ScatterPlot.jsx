@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import * as d3 from "d3";
 
-import { FixedDimensionSvg, AxisLabels } from "./index";
+import { FixedDimensionSvg, AxisLabels } from "./common";
 import { useD3Scales } from "./hooks";
 import LinePath from "./LinePath";
 import {
@@ -12,7 +12,7 @@ import {
   X_AXIS,
   Y_AXIS,
   LINE_CHART
-} from "./constants";
+} from "../../constants";
 
 export const SCATTER_PLOT_OPTIONS = [X_AXIS, Y_AXIS, LINE_CHART];
 

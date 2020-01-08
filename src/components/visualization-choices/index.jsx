@@ -1,5 +1,5 @@
 import React from "react";
-import { SCATTER_PLOT, BAR_GRAPH } from "../visualizations/constants";
+import { SCATTER_PLOT, BAR_GRAPH } from "../../constants";
 import scatterIcon from "../../icons/scatter.png";
 import barIcon from "../../icons/bar.png";
 import "./index.css";
@@ -16,28 +16,26 @@ const CHOICES = [
     icon: barIcon
   }
 ];
-CHOICES[SCATTER_PLOT] = {
-  icon: scatterIcon
-};
-CHOICES[BAR_GRAPH] = {
-  icon: barIcon
-};
 
-const GraphicChoices = ({ graphicChoice, setGraphicChoice }) => {
+const VisualizationChoices = ({
+  visualizationChoice,
+  setVisualizationChoice
+}) => {
   return (
-    <div className="Graphic-choices">
+    <div className="Visualization-choices">
       {CHOICES.map(choice => {
-        const selected = graphicChoice === choice.type;
+        const selected = visualizationChoice === choice.type;
         const choiceClass = selected
-          ? "Graphic-choice-selected"
-          : "Graphic-choice";
+          ? "Visualization-choice-selected"
+          : "Visualization-choice";
         return (
           <div
+            key={choice.type}
             className={choiceClass}
-            onClick={() => setGraphicChoice(choice.type)}
+            onClick={() => setVisualizationChoice(choice.type)}
           >
             <img
-              className="Graphic-icon-img"
+              className="Visualization-icon-img"
               src={choice.icon}
               alt={choice.name}
               width={60}
@@ -51,4 +49,4 @@ const GraphicChoices = ({ graphicChoice, setGraphicChoice }) => {
   );
 };
 
-export default GraphicChoices;
+export default VisualizationChoices;

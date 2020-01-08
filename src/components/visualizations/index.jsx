@@ -1,30 +1,17 @@
 import React from "react";
-import { DIMENSIONS, TRANSFORM_X_AXIS_LABLE } from "./constants";
+import { SCATTER_PLOT, BAR_GRAPH } from "../../constants";
 import "./index.css";
+import ScatterPlot from "./ScatterPlot";
+import BarGraph from "./BarGraph";
 
-export const FixedDimensionSvg = props => {
-  return (
-    <svg width={DIMENSIONS.width} height={DIMENSIONS.height}>
-      {props.children}
-    </svg>
-  );
+const VISUALIZATION_COMPONENTS = {};
+VISUALIZATION_COMPONENTS[SCATTER_PLOT] = ScatterPlot;
+VISUALIZATION_COMPONENTS[BAR_GRAPH] = BarGraph;
+
+const Graphic = props => {
+  const { visualizationChoice, data, options } = props;
+  const VisualizationComponent = VISUALIZATION_COMPONENTS[visualizationChoice];
+  return <VisualizationComponent data={data} options={options} />;
 };
 
-export const AxisLabels = props => {
-  const { xAxis, yAxis } = props;
-  return (
-    <>
-      <text className="axisLable" transform={TRANSFORM_X_AXIS_LABLE}>
-        {xAxis}
-      </text>
-      <text
-        className="axisLable"
-        transform="rotate(-90)"
-        x={0 - DIMENSIONS.height / 2}
-        y={30}
-      >
-        {yAxis}
-      </text>
-    </>
-  );
-};
+export default Graphic;

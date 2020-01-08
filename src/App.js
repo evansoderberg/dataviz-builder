@@ -2,23 +2,12 @@ import React, { useState } from "react";
 import "./App.css";
 import CSVReader from "./components/csv/reader";
 import DataOptions from "./components/data-options";
-import ScatterPlot from "./components/visualizations/ScatterPlot";
-import BarGraph from "./components/visualizations/BarGraph";
-import GraphicChoices from "./components/graphic-options";
-import { SCATTER_PLOT, BAR_GRAPH } from "./components/visualizations/constants";
-
-const VISUALIZATION_COMPONENTS = {};
-VISUALIZATION_COMPONENTS[SCATTER_PLOT] = ScatterPlot;
-VISUALIZATION_COMPONENTS[BAR_GRAPH] = BarGraph;
-
-const Graphic = props => {
-  const { graphicChoice, data, options } = props;
-  const VisualizationComponent = VISUALIZATION_COMPONENTS[graphicChoice];
-  return <VisualizationComponent data={data} options={options} />;
-};
+import Graphic from "./components/visualizations";
+import VisualizationChoices from "./components/visualization-choices";
+import { SCATTER_PLOT } from "./constants";
 
 const App = () => {
-  const [graphicChoice, setGraphicChoice] = useState(SCATTER_PLOT);
+  const [visualizationChoice, setVisualizationChoice] = useState(SCATTER_PLOT);
   const [visualizationOptions, setOptions] = useState(null);
   const [data, setData] = useState(null);
 
@@ -33,21 +22,21 @@ const App = () => {
   return (
     <div className="App">
       <CSVReader setData={setData} mergeOptions={mergeOptions} />
-      <GraphicChoices
-        graphicChoice={graphicChoice}
-        setGraphicChoice={setGraphicChoice}
+      <VisualizationChoices
+        visualizationChoice={visualizationChoice}
+        setVisualizationChoice={setVisualizationChoice}
       />
       {data ? (
         <div className="Viz-and-opts">
           <DataOptions
             data={data}
-            graphicChoice={graphicChoice}
+            visualizationChoice={visualizationChoice}
             onChange={mergeOptions}
             options={visualizationOptions}
           />
           <Graphic
             data={data}
-            graphicChoice={graphicChoice}
+            visualizationChoice={visualizationChoice}
             options={visualizationOptions}
           />
         </div>

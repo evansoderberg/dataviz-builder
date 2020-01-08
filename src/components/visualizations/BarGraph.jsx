@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import * as d3 from "d3";
 
-import { FixedDimensionSvg, AxisLabels } from "./index";
+import { FixedDimensionSvg, AxisLabels } from "./common";
 import { useD3Scales } from "./hooks";
 import {
   TRANSFORM_X_AXIS,
@@ -9,7 +9,7 @@ import {
   DIMENSIONS,
   X_AXIS,
   Y_AXIS
-} from "./constants";
+} from "../../constants";
 
 export const BAR_GRAPH_OPTIONS = [X_AXIS, Y_AXIS];
 

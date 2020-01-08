@@ -1,6 +1,6 @@
 import React from "react";
 import * as d3 from "d3";
-import { RED } from "./constants";
+import { RED } from "../../constants";
 
 const LinePath = props => {
   // Render a path calculated by d3.line, and scaled accordingly.
